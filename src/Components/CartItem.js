@@ -1,10 +1,13 @@
 import React from 'react';
+import {removeFromCart} from '../store/actions/action';
+import {connect} from 'react-redux';
 
-export default function CartIcon(props) {
+ function CartIcon(props) {
     // const product = props.product;
     // const quntity = props.quantity;
     const {product} = props;
     const {quantity} = props;
+    const {index} = props;
 
 
     return (
@@ -22,12 +25,29 @@ export default function CartIcon(props) {
                     Total: {product.price * quantity}$
                 </p>
                 
-                <a className="btn btn-danger"> 
+                <button
+                onClick={()=>props.remove(index)}
+                className="btn btn-danger"> 
                 Delete <i className='fa fa-trash'></i>
-                </a>
+                </button>
                 
             </div>
         </div>
     );
    
 }
+
+const mapStateToProps = (state)=> {
+    return {
+        data: state.cart,
+        total : state.cart.reduce((acc, item)=>{ return acc + item.quantity* item.product.price }, 0)
+    }
+}
+
+const mapDispatchToProps = (dispatch)=> {
+    return {
+        remove: (index) => dispatch(removeFromCart(index))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon)

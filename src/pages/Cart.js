@@ -6,15 +6,14 @@ import {connect} from 'react-redux';
 class Cart extends React.Component{
 
     render(){
-        console.log(this.props)
         return (
             <div>
                 <h1>Products</h1>
 
                 <div className="row">
-                    {this.props.data.map(product => 
-                        <div className={'col-4'} key={product.product.id}>
-                            <CartItem product={product.product} quantity={product.quantity}  />
+                    {this.props.data.map((product, index) =>
+                         <div className={'col-4'} key={product.product.id}>
+                            <CartItem index={index} product={product.product} quantity={product.quantity}  />
                         </div>
                     )}
                 </div>
