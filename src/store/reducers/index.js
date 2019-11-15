@@ -1,6 +1,4 @@
-import {ADD_TO_CART} from '../actions/action-types';
-import {REMOVE_FROM_CART} from '../actions/action-types';
-
+import {ADD_TO_CART, REMOVE_FROM_CART, PLACE_ORDER} from '../actions/action-types';
 
  export const cartReducer = (state, action)=> {
     switch(action.type) {
@@ -15,6 +13,11 @@ import {REMOVE_FROM_CART} from '../actions/action-types';
             new_state.cart.splice(index, 1)
             return new_state; 
             }
+            case(PLACE_ORDER): {
+                const new_state = {...state};
+                new_state.cart = []
+                return new_state; 
+                }
 
      default: 
         return state;
