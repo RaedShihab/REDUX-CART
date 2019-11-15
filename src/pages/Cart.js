@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {placeOrder} from '../store/actions/action'
 
 class Cart extends React.Component{
-
     render(){
         return (
             <div>

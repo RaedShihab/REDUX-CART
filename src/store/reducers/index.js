@@ -1,5 +1,5 @@
 import {ADD_TO_CART, REMOVE_FROM_CART, PLACE_ORDER} from '../actions/action-types';
-
+import {store} from '../store'
  export const cartReducer = (state, action)=> {
     switch(action.type) {
      case(ADD_TO_CART): {
