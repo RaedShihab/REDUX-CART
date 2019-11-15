@@ -11,7 +11,7 @@ class Cart extends React.Component{
 
                 <div className="row">
                     {this.props.data.map((product, index) =>
-                         <div className={'col-4'} key={product.product.id}>
+                         <div className={'col-4'} key={index}>
                             <CartItem index={index} product={product.product} quantity={product.quantity}  />
                         </div>
                     )}
